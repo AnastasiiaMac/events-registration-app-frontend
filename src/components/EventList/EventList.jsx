@@ -9,16 +9,18 @@ const EventList = () => {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [sortBy, setSortBy] = useState("title"); // Default sort by title
+  const [sortOrder, setSortOrder] = useState("asc"); // Default sort order ascending
 
   const perPage = 8;
 
   useEffect(() => {
     const loadEvents = async () => {
       try {
-        setLoading(true); // Show loading state
-        const data = await fetchEvents(currentPage, perPage); // Fetch paginated events
-        setEvents(data.data); // Update events state
-        setTotalPages(data.totalPages); // Update total pages state
+        setLoading(true);
+        const data = await fetchEvents(currentPage, perPage, sortBy, sortOrder);
+        setEvents(data.data);
+        setTotalPages(data.totalPages);
       } catch (error) {
         console.error("Error fetching events:", error);
         setError("Error fetching events.");
@@ -27,19 +29,27 @@ const EventList = () => {
       }
     };
 
-    loadEvents(); // Call the function to load events
-  }, [currentPage]); // Run this effect when currentPage changes
+    loadEvents();
+  }, [currentPage, sortBy, sortOrder]);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1); // Move to the next page
+      setCurrentPage(currentPage + 1);
     }
   };
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1); // Move to the previous page
+      setCurrentPage(currentPage - 1);
     }
+  };
+
+  const handleSortChange = (e) => {
+    setSortBy(e.target.value);
+  };
+
+  const handleSortOrderChange = (e) => {
+    setSortOrder(e.target.value);
   };
 
   if (loading) return <p>Loading events...</p>;
@@ -48,6 +58,31 @@ const EventList = () => {
   return (
     <div className={css.container}>
       <h1 className={css.title}>Events</h1>
+
+      {/* Sorting Dropdowns */}
+      <div className={css.sortingContainer}>
+        <label className={css.label}>Sort By:</label>
+        <select
+          value={sortBy}
+          onChange={handleSortChange}
+          className={css.select}
+        >
+          <option value="title">Title</option>
+          <option value="eventDate">Event Date</option>
+          <option value="organizer">Organizer</option>
+        </select>
+
+        <label className={css.label}>Order:</label>
+        <select
+          value={sortOrder}
+          onChange={handleSortOrderChange}
+          className={css.select}
+        >
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </div>
+
       <ul>
         {events.map((event) => (
           <li key={event._id} className={css.eventCard}>

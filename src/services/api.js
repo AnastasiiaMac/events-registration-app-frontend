@@ -1,9 +1,15 @@
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+// import.meta.env.VITE_API_URL ||
 
 // Fetch all events
-export const fetchEvents = async (page = 1, perPage = 10) => {
+export const fetchEvents = async (
+  page = 1,
+  perPage = 10,
+  sortBy = "title",
+  sortOrder = "asc"
+) => {
   const response = await fetch(
-    `${API_URL}/events?page=${page}&perPage=${perPage}`
+    `${API_URL}/events?page=${page}&perPage=${perPage}&sortBy=${sortBy}&sortOrder=${sortOrder}`
   );
   const data = await response.json();
   return data;
