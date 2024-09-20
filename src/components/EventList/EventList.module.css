@@ -5,14 +5,12 @@
   padding: 20px;
   background-color: #f9f9f9;
 }
-
 .title {
   font-size: 2rem;
   text-align: center;
   color: #333;
   margin-bottom: 20px;
 }
-
 ul {
   display: flex;
   flex-wrap: wrap;
