@@ -1,0 +1,119 @@
+/* EventList.module.css */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.eventCard {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  flex: 0 1 calc(25% - 20px);
+  margin-right: 10px;
+  margin-left: 10px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures the link container stays at the bottom */
+}
+
+.eventCard:hover {
+  transform: translateY(-5px);
+}
+
+.eventTitle {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.eventDescription {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.eventDate,
+.eventOrganizer {
+  font-size: 0.9rem;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.linkContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto; /* Ensures the link container is pushed to the bottom */
+}
+
+.button {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pageInfo {
+  margin: 0 10px;
+  font-size: 1rem;
+  color: #666;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .eventCard {
+    flex: 0 1 calc(50% - 20px); /* 2 cards per row for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .eventCard {
+    flex: 0 1 calc(100% - 20px); /* 1 card per row for small screens */
+  }
+}
