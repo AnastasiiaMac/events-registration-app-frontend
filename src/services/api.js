@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000"; // Your backend URL
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 // Fetch all events
 export const fetchEvents = async (page = 1, perPage = 10) => {
