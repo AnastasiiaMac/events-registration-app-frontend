@@ -1,0 +1,44 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.participantList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.participantItem {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.participantItem:hover {
+  background-color: #f0f0f0;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+}
