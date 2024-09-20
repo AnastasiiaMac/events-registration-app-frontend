@@ -9,8 +9,8 @@ const EventList = () => {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [sortBy, setSortBy] = useState("title"); // Default sort by title
-  const [sortOrder, setSortOrder] = useState("asc"); // Default sort order ascending
+  const [sortBy, setSortBy] = useState("title"); 
+  const [sortOrder, setSortOrder] = useState("asc"); 
 
   const perPage = 8;
 
